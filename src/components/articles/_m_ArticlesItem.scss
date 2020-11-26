@@ -1,0 +1,13 @@
+@import "../scss/colors.scss";
+
+@media (max-width: 770px) {
+    .description {
+        .title { 
+            font-size: 14px;
+        }
+
+        .author {
+            font-size: 8px;
+        }
+    }
+}

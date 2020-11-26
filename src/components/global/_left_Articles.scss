@@ -1,0 +1,170 @@
+@import "../scss/mixins";
+@import "../scss/colors";
+@import "../scss/variables";
+
+@include inputContainer;
+
+.articles-container {
+    display: flex;
+}
+
+.sidebar {
+    background: $sideBarBackground;
+    display: flex;
+    flex-basis: 80rem;
+    margin: $space-7 $space-8;
+}
+
+.left-focal {
+    padding: $space-4 $space-5;
+    display: grid;
+    grid-auto-rows: 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-flow:dense;
+
+    .article { 
+        display: flex;
+        flex-direction: column;
+        margin-top: $space-3;
+        position: relative;
+      }
+      
+        .article:first-child,
+        .article:nth-child(3n + 1){      
+            grid-row:span 2;
+            grid-column:span 2;
+            margin-top: 20px;
+            margin-right: $space-13;
+    
+    /*------ FIXME: refer ArticleItem classes breaks modularity ------*/
+    
+            .media {
+                order: 1;
+    
+                img {
+                    margin-top: $space-2;
+                    max-height: 370px;
+                }
+            }
+    
+                .title { 
+                    font-size: $space-4;
+                    margin-top: 0;
+                    margin-bottom: 20px;
+                }
+                .subhead { 
+                    display: block;
+                }
+                
+                .author {
+                    display: none;
+                }
+            
+    
+            &:after {
+                content: "";
+                display: block;
+                height: 90%;
+                position: absolute;
+                right: -$space-8;
+                top: 27px;
+                border-right: 1px solid $borderColor;
+            }
+    
+            &:before {
+                content: "";
+                display: block;
+                width: 40%;
+                position: absolute;
+                left: 0;
+                top: -27px;
+                border-bottom: 1px solid $borderColor;
+                padding-right: 35rem;            
+            }
+        }
+        
+        .article:first-child {
+            margin-top: $space-1;
+            &::before {
+                display: none;
+            }
+        }
+    
+        .article:nth-child(3n){ 
+            .author {
+                display: none;
+            }
+        }
+  }
+
+
+@media (max-width: 1270px) {
+    .sidebar{
+        display: none;
+    }
+    .left-focal {
+        .article:first-child,
+        .article:nth-child(3n + 1){ 
+            .media {
+                img {
+                    min-height: 390px;
+                }
+            }
+            &:before {
+                width: 75%;         
+            } 
+        }
+    }
+}
+
+@media (max-width: 1024px) { 
+    .left-focal {
+        .article:first-child,
+        .article:nth-child(3n + 1){ 
+            .media {
+                img {
+                    min-height: 260px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 800px) {
+    .left-focal {
+        .article {
+            margin-top: $space-2;
+        }
+    
+        .article:first-child,
+        .article:nth-child(3n + 1){ 
+            .media {
+                img {
+                    min-height: 250px;
+                }
+            }
+                .title { 
+                    font-size: 23px;
+                    margin-bottom: $space-1;
+                }
+    
+                .subhead {
+                    font-size: $space-2;
+                }
+    
+                .author {
+                    font-size: $space-1;
+                }
+            &:before {
+                width: 41%;         
+            }
+            &:after {
+                top: $space-1;
+            }
+        }
+    }
+}
+
+@media (max-width: 670px) {
+    @include mobile;
+}

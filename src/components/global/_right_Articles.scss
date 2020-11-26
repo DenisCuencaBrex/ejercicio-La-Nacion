@@ -1,0 +1,180 @@
+@import "../scss/mixins";
+@import "../scss/colors";
+@import "../scss/variables";
+
+.articles-container {
+    display: flex;
+}
+
+.right-focal {
+    padding: $space-4 $space-5;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-flow: dense;
+
+    .article { 
+        display: flex;
+        flex-direction: column;
+        margin-top: $space-2;
+        position: relative;
+      }
+      
+        .article:first-child,
+        .article:nth-child(5n + 1){      
+            grid-row:span 1;
+            grid-column:span 1;
+            margin-top: 0;
+            margin-right: 108px;
+            margin-bottom: $space-4;
+    
+    /*------ FIXME: refer ArticleItem classes breaks modularity ------*/
+    
+            .media {    
+                img {
+                    display: none;
+                }
+            }
+        
+                .title { 
+                    font-size: $space-4;
+                    margin-top: 0;
+                    margin-bottom: 20px;
+                }
+    
+                .subhead { 
+                    display: block;
+                }
+    
+            &:after {
+                content: "";
+                display: block;
+                height: 90%;
+                position: absolute;
+                right: -$space-8;
+                top: 27px;
+                border-right: 1px solid #d9d9d9;
+            }
+        }
+
+        .article:first-child + .article,
+        .article:nth-child(5n + 1) + .article{
+            grid-column: span 2;
+            margin-bottom: $space-2;
+
+                .author {
+                    display: none;
+                }
+        }
+
+        .article:first-child + .article + .article + .article,
+        .article:nth-child(5n + 1) + .article + .article +.article{
+            margin-left: $space-5;
+            .media {
+                display: none;
+            }
+            .title {
+                width: 70%;
+            }
+            .subhead, .author {
+                margin-top: $space-2;
+                display: block;
+            }
+        }
+        
+        .article:first-child {
+            &::before {
+                display: none;
+            }
+        }
+
+        .article:nth-child(5n){ 
+            border: 1px solid grey;
+            padding: 20px;
+            height: fit-content;
+            .media {
+                order:2;
+                margin-top: $space-2;
+
+                img {
+                    border-radius: 50%;
+                    width: 57%;
+                }
+            }
+
+            .title {
+                text-align: center;
+            }
+
+            .author {
+                text-align: center;
+                order: 3;
+                margin-top: $space-2;
+            }
+
+            &:before {
+                content: "";
+                display: block;
+                width: 100%;
+                position: absolute;
+                right: 0;
+                top: -$space-4;
+                border-bottom: 1px solid #d9d9d9;
+                padding-right: 40rem;            
+            }
+        }
+}
+
+@media (max-width: 800px) {
+    .right-focal {
+        .article:first-child + .article,
+        .article:nth-child(5n + 1) + .article{
+            .media {
+                .note-img {
+                 height: 400px;   
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 800px) {
+    .right-focal {
+        .article:first-child, .article:nth-child(5n + 1) {
+            .title {
+                font-size: 23px;
+            }
+            .subhead {
+                font-size: $space-2;
+            }
+            .author {
+                font-size: 12px;
+            }
+        }
+        .article:first-child + .article + .article + .article, 
+        .article:nth-child(5n + 1) + .article + .article + .article {
+            margin-left: 0;
+
+            .title {
+                width: 100%;
+            }
+        }
+
+        .subhead {
+            font-size: 12px;
+        }
+
+        .author {
+            font-size: $space-1;
+        }
+
+        .article:nth-child(5n) {
+            padding: 10px;
+        }
+    }
+}
+
+@media (max-width: 670px) {
+    @include mobile;
+    @include rightFocalMobile;
+}

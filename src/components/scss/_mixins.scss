@@ -1,0 +1,100 @@
+@mixin mobile {
+    .left-focal, 
+    .right-focal {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+
+        .article {
+            margin-top: 0;
+            margin-bottom: 16px;
+            padding: 5px;
+        }
+
+        .article:first-child, .article:nth-child(3n + 1) {
+            margin: 0;
+            margin-bottom: 16px;
+            margin-right: 0;
+            .media {
+                order: 0;
+
+                img {
+                    margin-top: 0;
+                }
+            }
+
+            &:after, &:before {
+                display: none;
+            }
+        }
+
+
+        .article:first-child, .article:nth-child(5n + 1) {
+            margin-bottom: 16px;
+            margin-right: 0;
+            &:after {
+                display: none;
+            }
+        }
+
+       .article:first-child + .article, .article:nth-child(5n + 1) + .article {
+        .media{
+            .note-img {
+                height: auto;
+            }
+        } 
+       }
+    }
+}
+
+@mixin rightFocalMobile {
+    .right-focal {
+        .article:nth-child(5n) {
+            margin: 10px;
+            &:before {
+                display: none;
+            }
+        }
+    }
+}
+
+@mixin inputContainer {
+    .input-container {
+        text-align: center;
+        margin-top: 8px;
+
+        &.hide {
+            display: none;
+        }
+
+        input {
+            width: 90%;
+            padding: 12px;
+            border: 1px solid green;
+            border-radius: 4px;
+        }
+
+        .left-focal-btn {
+            display: inline-block;
+            background-color: transparent;
+            border-radius: 28px;
+            border: 1px solid blue;
+            cursor: pointer;
+            margin-right: 16px;
+            font-size: 16px;
+            padding: 16px 32px;
+        }
+
+        .right-focal-btn {
+            display: inline-block;
+            background-color: transparent;
+            border-radius: 28px;
+            border: 1px solid red;
+            display: inline-block;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 16px 32px;
+            margin-top: 24px;
+        }
+    }
+}
