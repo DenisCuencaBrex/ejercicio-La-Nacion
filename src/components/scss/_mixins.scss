@@ -8,7 +8,12 @@
         .article {
             margin-top: 0;
             margin-bottom: 16px;
-            padding: 5px;
+
+            .title, 
+            .subhead, 
+            .author {
+                margin-left: 5px;
+            }
         }
 
         .article:first-child, .article:nth-child(3n + 1) {
