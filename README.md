@@ -13,4 +13,4 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ### Check the app in live version
 
-Go to `https://5fc03d272e5496252a401cff--lanacion.netlify.app` to view my project live
+Go to `https://5fc03dbfd552722d50defde3--lanacion.netlify.app` to view my project live
